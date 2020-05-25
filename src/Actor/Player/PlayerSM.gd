@@ -14,8 +14,11 @@ func _input(event):
 
 func _state_logic(delta):
 	if state != States.WAIT:
-		parent.apply_gravity(delta)
-		parent.handle_move_input()
+		if state != States.LAUNCH:
+			parent.apply_gravity(delta)
+			parent.handle_move_input()
+		elif state == States.LAUNCH:
+			parent.handle_launch()
 		parent.apply_movement()
 
 

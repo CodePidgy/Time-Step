@@ -31,6 +31,11 @@ __meta__ = {
 wait_time = 10.0
 one_shot = true
 
+[node name="SwitchLevel" type="Timer" parent="."]
+wait_time = 1.25
+one_shot = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
+[connection signal="timeout" from="SwitchLevel" to="." method="go_to_next_level"]

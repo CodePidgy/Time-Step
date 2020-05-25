@@ -2,6 +2,7 @@ extends Node
 
 
 onready var TIMER = $Timer
+onready var SWITCHLEVEL_TIMER = $SwitchLevel
 onready var TIMER_UI = $CanvasLayer/UI/Label
 
 var started = false
@@ -14,7 +15,7 @@ func _ready():
 
 
 func _physics_process(_delta):
-	TIMER_UI.text = str(round(TIMER.get_time_left()))
+	TIMER_UI.text = str(round(TIMER.get_time_left())) if not TIMER.is_stopped() else "10"
 
 
 func _input(event):
@@ -41,3 +42,5 @@ func go_to_next_level(first = false):
 		remove_child(_load_current_level())
 		level += 1
 	add_child(_load_next_level())
+	
+	TIMER.stop()
