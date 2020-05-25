@@ -43,4 +43,5 @@ func go_to_next_level(first = false):
 		level += 1
 	add_child(_load_next_level())
 	
+	TIMER.set_paused(false)
 	TIMER.stop()
