@@ -1,3 +1,24 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 8, 112 )
 
 [node name="Game" type="Node"]
+
+[node name="LeftWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
+position = Vector2( -8, 104 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="RightWall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
+position = Vector2( 392, 104 )
+shape = SubResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
