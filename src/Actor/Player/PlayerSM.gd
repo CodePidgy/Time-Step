@@ -8,7 +8,7 @@ func _ready():
 func _input(event):
 	if state == States.IDLE or state == States.RUN:
 		if event.is_action_pressed("jump"):
-			state = States.JUMP
+			set_state(States.JUMP)
 			parent.velocity.y = -parent.JUMP_VELOCITY
 
 
@@ -26,16 +26,30 @@ func _get_transition():
 			pass
 		# In IDLE
 		States.IDLE:
-			pass
+			# Not on floor
+			if not parent.is_on_floor():
+				return States.FALL
+			# On floor and moving
+			elif parent.velocity.x != 0:
+				return States.RUN
 		# In RUN
 		States.RUN:
-			pass
+			# Not on floor
+			if not parent.is_on_floor():
+				return States.FALL
+			# On floor and not moving
+			elif parent.velocity.x == 0:
+				return States.IDLE
 		# In JUMP
 		States.JUMP:
-			pass
+			# Falling
+			if parent.velocity.y >= 0:
+				return States.FALL
 		# In FALL
 		States.FALL:
-			pass
+			# On floor
+			if parent.is_on_floor():
+				return States.IDLE
 		# In ATK_LIGHT
 		States.ATK_LIGHT:
 			pass

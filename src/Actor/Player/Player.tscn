@@ -59,7 +59,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=3]
 resource_name = "idle"
-length = 1.2
+length = 0.1
 loop = true
 step = 0.6
 tracks/0/type = "value"
@@ -69,10 +69,10 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.6 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 10, 9 ]
+"values": [ 10 ]
 }
 
 [sub_resource type="Animation" id=8]
@@ -152,7 +152,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 24
-frame = 10
+frame = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, 2 )
