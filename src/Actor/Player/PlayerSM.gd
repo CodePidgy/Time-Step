@@ -10,15 +10,27 @@ func _input(event):
 		if event.is_action_pressed("jump"):
 			set_state(States.JUMP)
 			parent.velocity.y = -parent.JUMP_VELOCITY
+		elif event.is_action_pressed("atk_light"):
+			set_state(States.ATK_LIGHT)
 
 
 func _state_logic(delta):
+	# Not in WAIT
 	if state != States.WAIT:
+		# Not in LAUNCH
 		if state != States.LAUNCH:
-			parent.apply_gravity(delta)
-			parent.handle_move_input()
+			# Not in ATK_LIGHT
+			if state != States.ATK_LIGHT:
+				parent.apply_gravity(delta)
+				parent.handle_move_input()
+			# In ATK_LIGHT
+			elif state == States.ATK_LIGHT:
+				parent.apply_gravity(delta)
+				parent.handle_attack()
+		# In LAUNCH
 		elif state == States.LAUNCH:
 			parent.handle_launch()
+		# Always apply movement
 		parent.apply_movement()
 
 
@@ -55,7 +67,9 @@ func _get_transition():
 				return States.IDLE
 		# In ATK_LIGHT
 		States.ATK_LIGHT:
-			pass
+			# Animation ended
+			if not parent.attacking:
+				return States.IDLE
 		# In ATK_HEAVY
 		States.ATK_HEAVY:
 			pass
