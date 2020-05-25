@@ -2,7 +2,7 @@ class_name StateMachine
 extends Node
 
 
-enum States {WAITING, IDLE, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH}
+enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH}
 
 onready var parent = get_parent()
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/art/player/player sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/Actor/Player/PlayerSM.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
@@ -142,6 +143,9 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
