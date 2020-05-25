@@ -19,6 +19,10 @@ config/name="TIme Step"
 run/main_scene="res://src/Main/Game.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Game="*res://src/Main/Game.tscn"
+
 [display]
 
 window/size/width=384
