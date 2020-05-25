@@ -3,11 +3,16 @@ extends KinematicBody2D
 
 onready var GRAVITY = ProjectSettings.get("physics/2d/default_gravity")
 onready var SPRITE = $Sprite
+onready var SM = $StateMachine
 
 export var SPEED = 150
 export var JUMP_VELOCITY = 350
 
 var velocity = Vector2.ZERO
+
+
+func _ready():
+	Globals.PLAYER = self
 
 
 func apply_gravity(delta):

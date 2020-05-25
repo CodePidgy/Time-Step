@@ -16,6 +16,7 @@ func _input(event):
 	if not started and event.is_action_pressed("jump"):
 		started = true
 		TIMER.start()
+		Globals.PLAYER.SM.state = Globals.PLAYER.SM.States.IDLE
 
 
 func _load_next_level():
