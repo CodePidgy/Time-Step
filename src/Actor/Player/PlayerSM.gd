@@ -12,6 +12,8 @@ func _input(event):
 			parent.velocity.y = -parent.JUMP_VELOCITY
 		elif event.is_action_pressed("atk_light"):
 			set_state(States.ATK_LIGHT)
+		elif event.is_action_pressed("atk_heavy"):
+			set_state(States.ATK_HEAVY)
 
 
 func _state_logic(delta):
@@ -29,7 +31,7 @@ func _state_logic(delta):
 			parent.handle_attack()
 		# In ATK_HEAVY
 		States.ATK_HEAVY:
-			pass
+			parent.handle_attack()
 		# In LAUNCH
 		States.LAUNCH:
 			parent.handle_launch()
@@ -74,7 +76,8 @@ func _get_transition():
 				return States.IDLE
 		# In ATK_HEAVY
 		States.ATK_HEAVY:
-			pass
+			if not parent.attacking:
+				return States.IDLE
 		# In LAUNCH
 		States.LAUNCH:
 			pass

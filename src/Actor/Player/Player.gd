@@ -4,12 +4,16 @@ extends KinematicBody2D
 onready var GRAVITY = ProjectSettings.get("physics/2d/default_gravity")
 onready var SM = $StateMachine
 onready var SPRITE = $Sprite
+onready var SLASH_POINT = $Sprite/SlashPoint
+onready var COOLDOWN = $Sprite/SlashPoint/Cooldown
 onready var COLLISION = $CollisionShape2D
 onready var ANIMATION_PLAYER = $AnimationPlayer
 
 export var SPEED = 150
 export var JUMP_VELOCITY = 350
 export var LAUNCH_SPEED = 700
+
+const Slash = preload("res://src/Actor/Player/Slash/PlayerSlash.tscn")
 
 var attacking = false
 var velocity = Vector2.ZERO
@@ -45,3 +49,12 @@ func handle_attack():
 	else:
 		attacking = true
 		velocity = Vector2.ZERO
+
+
+func handle_slash():
+	var slash = Slash.instance()
+	slash.global_position = SLASH_POINT.global_position
+	slash.scale.x = SPRITE.scale.x
+	
+	slash.set_as_toplevel(true)
+	SLASH_POINT.add_child(slash)
