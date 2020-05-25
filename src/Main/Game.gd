@@ -1,12 +1,21 @@
 extends Node
 
 
+onready var TIMER = $Timer
+
+var started = false
 var level = 1
 
 
 func _ready():
 	Globals.GAME = self
 	go_to_next_level(true)
+
+
+func _input(event):
+	if not started and event.is_action_pressed("jump"):
+		started = true
+		TIMER.start()
 
 
 func _load_next_level():
@@ -21,6 +30,7 @@ func _load_current_level():
 
 
 func go_to_next_level(first = false):
+	started = false
 	if not first:
 		remove_child(_load_current_level())
 		level += 1

@@ -6,16 +6,18 @@ func _ready():
 
 
 func _input(event):
-	if state == States.IDLE or state == States.RUN:
-		if event.is_action_pressed("jump"):
-			state = States.JUMP
-			parent.velocity.y = -parent.JUMP_VELOCITY
+	if Globals.GAME.started:
+		if state == States.IDLE or state == States.RUN:
+			if event.is_action_pressed("jump"):
+				state = States.JUMP
+				parent.velocity.y = -parent.JUMP_VELOCITY
 
 
 func _state_logic(delta):
-	parent.apply_gravity(delta)
-	parent.handle_move_input()
-	parent.apply_movement()
+	if Globals.GAME.started:
+		parent.apply_gravity(delta)
+		parent.handle_move_input()
+		parent.apply_movement()
 
 
 func _get_transition():
