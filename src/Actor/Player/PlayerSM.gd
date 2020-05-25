@@ -15,23 +15,25 @@ func _input(event):
 
 
 func _state_logic(delta):
-	# Not in WAIT
-	if state != States.WAIT:
-		# Not in LAUNCH
-		if state != States.LAUNCH:
-			# Not in ATK_LIGHT
-			if state != States.ATK_LIGHT:
-				parent.apply_gravity(delta)
-				parent.handle_move_input()
-			# In ATK_LIGHT
-			elif state == States.ATK_LIGHT:
-				parent.apply_gravity(delta)
-				parent.handle_attack()
+	match state:
+		# In WAIT
+		States.WAIT:
+			pass
+		# In IDLE, RUN, JUMP and FALL
+		States.IDLE, States.RUN, States.JUMP, States.FALL:
+			parent.handle_move_input()
+			parent.apply_gravity(delta)
+			parent.apply_movement()
+		# In ATK_LIGHT
+		States.ATK_LIGHT:
+			parent.handle_attack()
+		# In ATK_HEAVY
+		States.ATK_HEAVY:
+			pass
 		# In LAUNCH
-		elif state == States.LAUNCH:
+		States.LAUNCH:
 			parent.handle_launch()
-		# Always apply movement
-		parent.apply_movement()
+			parent.apply_movement()
 
 
 func _get_transition():
