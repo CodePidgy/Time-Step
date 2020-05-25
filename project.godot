@@ -97,6 +97,10 @@ atk_heavy={
 2d_physics/layer_4="objects"
 2d_physics/layer_5="ground"
 
+[physics]
+
+2d/default_gravity=980
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
