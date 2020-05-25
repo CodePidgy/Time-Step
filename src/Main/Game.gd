@@ -2,6 +2,7 @@ extends Node
 
 
 onready var TIMER = $Timer
+onready var TIMER_UI = $CanvasLayer/UI/Label
 
 var started = false
 var level = 1
@@ -10,6 +11,10 @@ var level = 1
 func _ready():
 	Globals.GAME = self
 	go_to_next_level(true)
+
+
+func _physics_process(_delta):
+	TIMER_UI.text = str(round(TIMER.get_time_left()))
 
 
 func _input(event):
