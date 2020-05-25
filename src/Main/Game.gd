@@ -5,6 +5,7 @@ var level = 1
 
 
 func _ready():
+	Globals.GAME = self
 	go_to_next_level(true)
 
 
