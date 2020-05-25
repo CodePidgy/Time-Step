@@ -51,18 +51,18 @@ func _get_transition():
 func _enter_state(new_state, _old_state):
 	match new_state:
 		States.WAIT:
-			pass
+			parent.ANIMATION_PLAYER.play("wait")
 		States.IDLE:
-			pass
+			parent.ANIMATION_PLAYER.play("idle")
 		States.RUN:
-			pass
+			parent.ANIMATION_PLAYER.play("run")
 		States.JUMP:
-			pass
+			parent.ANIMATION_PLAYER.play("jump")
 		States.FALL:
-			pass
+			parent.ANIMATION_PLAYER.play("fall")
 		States.ATK_LIGHT:
-			pass
+			parent.ANIMATION_PLAYER.play("atk_light")
 		States.ATK_HEAVY:
-			pass
+			parent.ANIMATION_PLAYER.play("atk_heavy")
 		States.LAUNCH:
-			pass
+			parent.ANIMATION_PLAYER.play("launch")

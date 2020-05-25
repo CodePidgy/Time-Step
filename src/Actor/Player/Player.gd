@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 
 onready var GRAVITY = ProjectSettings.get("physics/2d/default_gravity")
+onready var ANIMATION_PLAYER = $AnimationPlayer
 onready var SPRITE = $Sprite
 onready var SM = $StateMachine
 
