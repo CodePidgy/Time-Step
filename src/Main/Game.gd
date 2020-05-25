@@ -18,7 +18,6 @@ func _load_next_level():
 func _load_current_level():
 	var current_level = get_node("Level" + str(level))
 	return current_level
-	
 
 
 func go_to_next_level(first = false):
