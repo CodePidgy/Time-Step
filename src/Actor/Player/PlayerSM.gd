@@ -13,7 +13,8 @@ func _input(event):
 		elif event.is_action_pressed("atk_light"):
 			set_state(States.ATK_LIGHT)
 		elif event.is_action_pressed("atk_heavy"):
-			set_state(States.ATK_HEAVY)
+			if parent.COOLDOWN.get_time_left() == 0:
+				set_state(States.ATK_HEAVY)
 
 
 func _state_logic(delta):

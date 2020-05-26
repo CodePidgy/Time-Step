@@ -36,6 +36,20 @@ tracks/1/keys = {
 "method": "handle_slash"
 } ]
 }
+tracks/2/type = "method"
+tracks/2/path = NodePath("Sprite/SlashPoint/Cooldown")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.4 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "start"
+} ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "atk_light"
@@ -163,12 +177,13 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 24
-frame = 20
+frame = 23
 
 [node name="SlashPoint" type="Position2D" parent="Sprite"]
 position = Vector2( 16, 2 )
 
 [node name="Cooldown" type="Timer" parent="Sprite/SlashPoint"]
+one_shot = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
