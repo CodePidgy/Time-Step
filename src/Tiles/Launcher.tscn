@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://assets/art/tiles/launcher sheet.png" type="Texture" id=1]
+[ext_resource path="res://src/Tiles/Launcher.gd" type="Script" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 7, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 8 )
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 8, 8 )
+
+[node name="Launcher" type="Area2D"]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="Piston" type="KinematicBody2D" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Piston"]
+texture = ExtResource( 1 )
+hframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Piston"]
+visible = false
+position = Vector2( 0, -6 )
+shape = SubResource( 1 )
+
+[node name="Tween" type="Tween" parent="Piston"]
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 1 )
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -16 )
+shape = SubResource( 2 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+visible = false
+collision_layer = 32
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource( 3 )
+[connection signal="body_entered" from="." to="." method="launch"]
