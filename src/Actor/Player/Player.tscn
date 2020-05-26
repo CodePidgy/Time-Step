@@ -169,6 +169,7 @@ tracks/0/keys = {
 }
 
 [node name="Player" type="KinematicBody2D"]
+collision_mask = 56
 script = ExtResource( 3 )
 
 [node name="StateMachine" type="Node" parent="."]
@@ -177,7 +178,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 24
-frame = 23
+frame = 20
 
 [node name="SlashPoint" type="Position2D" parent="Sprite"]
 position = Vector2( 16, 2 )

@@ -2,8 +2,6 @@ class_name StateMachine
 extends Node
 
 
-enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH}
-
 onready var parent = get_parent()
 
 var state = null setget set_state
