@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 onready var GRAVITY = ProjectSettings.get("physics/2d/default_gravity")
 onready var SM = $StateMachine
+onready var MT = $MovementTracker
 onready var SPRITE = $Sprite
 onready var SLASH_POINT = $Sprite/SlashPoint
 onready var COOLDOWN = $Sprite/SlashPoint/Cooldown
