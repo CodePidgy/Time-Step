@@ -3,12 +3,15 @@ extends KinematicBody2D
 
 onready var GRAVITY = ProjectSettings.get("physics/2d/default_gravity")
 onready var SM = $StateMachine
+onready var MT = $MovementTracker
 onready var SPRITE = $Sprite
 onready var SLASH_POINT = $Sprite/SlashPoint
 onready var COOLDOWN = $Sprite/SlashPoint/Cooldown
 onready var COLLISION = $CollisionShape2D
 onready var ANIMATION_PLAYER = $AnimationPlayer
+onready var JUMP_SOUND = $Jump
 
+export var DEATH_VECTOR = Vector2(50, -220)
 export var SPEED = 150
 export var JUMP_VELOCITY = 350
 export var LAUNCH_SPEED = 700
@@ -63,3 +66,17 @@ func handle_slash():
 func handle_slice_hit(body):
 	if "Armstrong" in body.name:
 		body.ANIMATION_PLAYER.play("die")
+
+
+func handle_death():
+	if SM.state != SM.States.DEAD:
+		SM.state = SM.States.DEAD
+		
+		velocity.x = DEATH_VECTOR.x * SPRITE.scale.x
+		velocity.y = DEATH_VECTOR.y
+	elif SM.state == SM.States.DEAD:
+		rotation_degrees = clamp(rotation_degrees + 5 * SPRITE.scale.x, -90, 90)
+
+
+func end_game():
+	Globals.GAME.end_game()

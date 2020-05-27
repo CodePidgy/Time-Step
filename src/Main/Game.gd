@@ -1,12 +1,15 @@
 extends Node
 
 
-onready var TIMER = $Timer
+onready var CLONE = preload("res://src/Actor/Orb/Orb.tscn")
 onready var SWITCHLEVEL_TIMER = $SwitchLevel
+onready var TIMER = $Timer
 onready var TIMER_UI = $CanvasLayer/UI/Label
+onready var GAMEOVER_UI = $CanvasLayer/UI/Label2
 
-var started = false
+var previous_orders = []
 var level = 1
+var started = false
 
 
 func _ready():
@@ -36,12 +39,31 @@ func _load_current_level():
 	return current_level
 
 
+func _spawn_clone():
+	var new_clone = CLONE.instance()
+	new_clone.set_z_index(1)
+	new_clone.ORDER = previous_orders[level - 1]
+	add_child(new_clone)
+
+
 func go_to_next_level(first = false):
 	started = false
 	if not first:
+		previous_orders.append(Globals.PLAYER.MT.new_order)
+		_spawn_clone()
 		remove_child(_load_current_level())
 		level += 1
 	add_child(_load_next_level())
 	
 	TIMER.set_paused(false)
 	TIMER.stop()
+
+
+func end_game():
+	for child in get_children():
+		if not child.name == "CanvasLayer":
+			remove_child(child)
+	
+	TIMER_UI.set_visible(false)
+	GAMEOVER_UI.text = "GAME OVER"
+	GAMEOVER_UI.set_visible(true)

@@ -1,7 +1,7 @@
 extends StateMachine
 
 
-enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH}
+enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH, DEAD}
 
 
 func _ready():
@@ -13,6 +13,7 @@ func _input(event):
 		if event.is_action_pressed("jump"):
 			set_state(States.JUMP)
 			parent.velocity.y = -parent.JUMP_VELOCITY
+			parent.JUMP_SOUND.play()
 		elif event.is_action_pressed("atk_light"):
 			set_state(States.ATK_LIGHT)
 		elif event.is_action_pressed("atk_heavy"):
@@ -39,6 +40,11 @@ func _state_logic(delta):
 		# In LAUNCH
 		States.LAUNCH:
 			parent.handle_launch()
+			parent.apply_movement()
+		# In DEAD
+		States.DEAD:
+			parent.handle_death()
+			parent.apply_gravity(delta)
 			parent.apply_movement()
 
 
