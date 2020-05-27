@@ -8,6 +8,7 @@ onready var DETECTOR_LEFT = $DetectorLeft
 onready var DETECTOR_RIGHT = $DetectorRight
 onready var ANIMATION_PLAYER = $AnimationPlayer
 
+export var DEATH_VECTOR = Vector2(50, -220)
 export var DESIRED_STATE = 1
 export var SPEED = 50
 
@@ -37,3 +38,13 @@ func handle_collisions():
 		SPRITE.scale.x = direction
 	
 	velocity.x = direction * SPEED
+
+
+func handle_death():
+	if SM.state != SM.States.DEAD:
+		SM.state = SM.States.DEAD
+		
+		velocity.x = DEATH_VECTOR.x * Globals.PLAYER.SPRITE.scale.x
+		velocity.y = DEATH_VECTOR.y
+	elif SM.state == SM.States.DEAD:
+		rotation_degrees = clamp(rotation_degrees + 5 * Globals.PLAYER.SPRITE.scale.x, -90, 90)
