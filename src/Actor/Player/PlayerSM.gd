@@ -41,6 +41,11 @@ func _state_logic(delta):
 		States.LAUNCH:
 			parent.handle_launch()
 			parent.apply_movement()
+		# In DEAD
+		States.DEAD:
+			parent.handle_death()
+			parent.apply_gravity(delta)
+			parent.apply_movement()
 
 
 func _get_transition():

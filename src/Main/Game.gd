@@ -5,6 +5,7 @@ onready var CLONE = preload("res://src/Actor/Orb/Orb.tscn")
 onready var SWITCHLEVEL_TIMER = $SwitchLevel
 onready var TIMER = $Timer
 onready var TIMER_UI = $CanvasLayer/UI/Label
+onready var GAMEOVER_UI = $CanvasLayer/UI/Label2
 
 var previous_orders = []
 var level = 1
@@ -60,4 +61,9 @@ func go_to_next_level(first = false):
 
 func end_game():
 	for child in get_children():
-		remove_child(child)
+		if not child.name == "CanvasLayer":
+			remove_child(child)
+	
+	TIMER_UI.set_visible(false)
+	GAMEOVER_UI.text = "GAME OVER"
+	GAMEOVER_UI.set_visible(true)

@@ -135,7 +135,7 @@ script = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.971346 )
+self_modulate = Color( 1, 1, 1, 0.941157 )
 position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
 hframes = 4
@@ -168,4 +168,4 @@ anims/wait = SubResource( 5 )
 
 [node name="Die" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
-volume_db = -5.0
+volume_db = -8.0
