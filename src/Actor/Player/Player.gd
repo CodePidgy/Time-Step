@@ -58,3 +58,8 @@ func handle_slash():
 	
 	slash.set_as_toplevel(true)
 	SLASH_POINT.add_child(slash)
+
+
+func handle_slice_hit(body):
+	if "Armstrong" in body.name:
+		body.ANIMATION_PLAYER.play("die")

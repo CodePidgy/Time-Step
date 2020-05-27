@@ -1,14 +1,16 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/art/player/player sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Actor/Player/PlayerSM.gd" type="Script" id=2]
 [ext_resource path="res://src/Actor/Player/Player.gd" type="Script" id=3]
 
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 2, 6 )
+
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 4, 6 )
 
-[sub_resource type="Animation" id=2]
-resource_name = "atk_heavy"
+[sub_resource type="Animation" id=3]
 length = 0.4
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -51,8 +53,7 @@ tracks/2/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=3]
-resource_name = "atk_light"
+[sub_resource type="Animation" id=4]
 length = 0.32
 step = 0.08
 tracks/0/type = "value"
@@ -67,9 +68,20 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16, 17, 18, 19 ]
 }
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite/Slice/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.32 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ false, true ]
+}
 
-[sub_resource type="Animation" id=4]
-resource_name = "fall"
+[sub_resource type="Animation" id=5]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -85,7 +97,7 @@ tracks/0/keys = {
 "values": [ 9 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=6]
 length = 0.1
 loop = true
 step = 0.6
@@ -102,8 +114,7 @@ tracks/0/keys = {
 "values": [ 10 ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "jump"
+[sub_resource type="Animation" id=7]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -119,8 +130,7 @@ tracks/0/keys = {
 "values": [ 8 ]
 }
 
-[sub_resource type="Animation" id=7]
-resource_name = "launch"
+[sub_resource type="Animation" id=8]
 length = 0.25
 step = 0.05
 tracks/0/type = "value"
@@ -136,7 +146,7 @@ tracks/0/keys = {
 "values": [ 12, 13, 14, 15 ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=9]
 length = 0.8
 loop = true
 tracks/0/type = "value"
@@ -152,7 +162,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3, 4, 5, 6, 7 ]
 }
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=10]
 length = 0.1
 loop = true
 tracks/0/type = "value"
@@ -178,7 +188,7 @@ script = ExtResource( 2 )
 [node name="Sprite" type="Sprite" parent="."]
 texture = ExtResource( 1 )
 hframes = 24
-frame = 20
+frame = 10
 
 [node name="SlashPoint" type="Position2D" parent="Sprite"]
 position = Vector2( 16, 2 )
@@ -186,18 +196,25 @@ position = Vector2( 16, 2 )
 [node name="Cooldown" type="Timer" parent="Sprite/SlashPoint"]
 one_shot = true
 
+[node name="Slice" type="Area2D" parent="Sprite"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sprite/Slice"]
+position = Vector2( 6, 2 )
+shape = SubResource( 2 )
+disabled = true
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2( 0, 2 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "wait"
-anims/atk_heavy = SubResource( 2 )
-anims/atk_light = SubResource( 3 )
-anims/fall = SubResource( 4 )
-anims/idle = SubResource( 5 )
-anims/jump = SubResource( 6 )
-anims/launch = SubResource( 7 )
-anims/run = SubResource( 8 )
-anims/wait = SubResource( 9 )
+anims/atk_heavy = SubResource( 3 )
+anims/atk_light = SubResource( 4 )
+anims/fall = SubResource( 5 )
+anims/idle = SubResource( 6 )
+anims/jump = SubResource( 7 )
+anims/launch = SubResource( 8 )
+anims/run = SubResource( 9 )
+anims/wait = SubResource( 10 )
+[connection signal="body_entered" from="Sprite/Slice" to="." method="handle_slice_hit"]

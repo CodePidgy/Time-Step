@@ -1,7 +1,7 @@
 extends StateMachine
 
 
-enum States {WAIT, IDLE, RUN}
+enum States {WAIT, IDLE, RUN, DEAD}
 
 
 func _ready():
@@ -20,6 +20,11 @@ func _state_logic(delta):
 		# In RUN
 		States.RUN:
 			parent.handle_collisions()
+			parent.apply_gravity(delta)
+			parent.apply_movement()
+		# In DEAD
+		States.DEAD:
+			parent.handle_death()
 			parent.apply_gravity(delta)
 			parent.apply_movement()
 
