@@ -25,7 +25,12 @@ func _state_logic(delta):
 
 
 func _get_transition():
-	pass
+	match state:
+		# In WAIT
+		States.WAIT:
+			# Player not in WAIT
+			if Globals.PLAYER.SM.state != States.WAIT:
+				return parent.DESIRED_STATE
 
 
 func _enter_state(new_state, _old_state):

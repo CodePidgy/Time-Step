@@ -23,7 +23,6 @@ func _input(event):
 		started = true
 		TIMER.start()
 		Globals.PLAYER.SM.state = Globals.PLAYER.SM.States.IDLE
-		Globals.ARMSTRONG.SM.state = Globals.ARMSTRONG.DESIRED_STATE
 
 
 func _load_next_level():
