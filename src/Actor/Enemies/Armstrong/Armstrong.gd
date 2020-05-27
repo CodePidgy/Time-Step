@@ -12,6 +12,7 @@ export var DEATH_VECTOR = Vector2(50, -220)
 export var DESIRED_STATE = 1
 export var SPEED = 50
 
+var player_direction
 var velocity = Vector2.ZERO
 
 
@@ -43,8 +44,9 @@ func handle_collisions():
 func handle_death():
 	if SM.state != SM.States.DEAD:
 		SM.state = SM.States.DEAD
+		player_direction = Globals.PLAYER.SPRITE.scale.x
 		
-		velocity.x = DEATH_VECTOR.x * Globals.PLAYER.SPRITE.scale.x
+		velocity.x = DEATH_VECTOR.x * player_direction
 		velocity.y = DEATH_VECTOR.y
 	elif SM.state == SM.States.DEAD:
-		rotation_degrees = clamp(rotation_degrees + 5 * Globals.PLAYER.SPRITE.scale.x, -90, 90)
+		rotation_degrees = clamp(rotation_degrees + 5 * player_direction, -90, 90)
