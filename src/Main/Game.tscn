@@ -42,4 +42,5 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
+[connection signal="timeout" from="Timer" to="." method="no_more_time"]
 [connection signal="timeout" from="SwitchLevel" to="." method="go_to_next_level"]

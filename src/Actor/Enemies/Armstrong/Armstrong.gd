@@ -44,6 +44,7 @@ func handle_collisions():
 func handle_death():
 	if SM.state != SM.States.DEAD:
 		SM.state = SM.States.DEAD
+		Globals.GAME.num_enemies -= 1
 		player_direction = Globals.PLAYER.SPRITE.scale.x
 		
 		velocity.x = DEATH_VECTOR.x * player_direction
