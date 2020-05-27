@@ -65,3 +65,4 @@ shape = SubResource( 2 )
 anims/idle = SubResource( 1 )
 anims/wait = SubResource( 3 )
 [connection signal="timeout" from="Timer" to="." method="start"]
+[connection signal="body_entered" from="Detect" to="." method="collide"]

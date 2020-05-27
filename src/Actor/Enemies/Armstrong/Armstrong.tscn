@@ -135,7 +135,7 @@ script = ExtResource( 3 )
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-self_modulate = Color( 1, 1, 1, 0.98933 )
+self_modulate = Color( 1, 1, 1, 0.971346 )
 position = Vector2( 0, -2 )
 texture = ExtResource( 1 )
 hframes = 4

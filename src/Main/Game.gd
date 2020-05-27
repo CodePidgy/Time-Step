@@ -56,3 +56,8 @@ func go_to_next_level(first = false):
 	
 	TIMER.set_paused(false)
 	TIMER.stop()
+
+
+func end_game():
+	for child in get_children():
+		remove_child(child)

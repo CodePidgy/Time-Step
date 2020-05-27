@@ -23,3 +23,8 @@ func reset():
 
 func start():
 	SM.state = SM.States.IDLE
+
+
+func collide(body):
+	if body.name == "Player":
+		body.ANIMATION_PLAYER.play("die")

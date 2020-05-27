@@ -1,7 +1,7 @@
 extends StateMachine
 
 
-enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH}
+enum States {WAIT, IDLE, RUN, JUMP, FALL, ATK_LIGHT, ATK_HEAVY, LAUNCH, DEAD}
 
 
 func _ready():
