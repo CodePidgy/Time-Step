@@ -14,10 +14,6 @@ export var SPEED = 50
 var velocity = Vector2.ZERO
 
 
-func _ready():
-	Globals.ARMSTRONG = self
-
-
 func apply_gravity(delta):
 	velocity.y += GRAVITY * delta
 
