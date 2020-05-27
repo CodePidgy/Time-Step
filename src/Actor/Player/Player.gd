@@ -8,6 +8,7 @@ onready var SLASH_POINT = $Sprite/SlashPoint
 onready var COOLDOWN = $Sprite/SlashPoint/Cooldown
 onready var COLLISION = $CollisionShape2D
 onready var ANIMATION_PLAYER = $AnimationPlayer
+onready var JUMP_SOUND = $Jump
 
 export var SPEED = 150
 export var JUMP_VELOCITY = 350

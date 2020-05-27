@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/art/tiles/launcher sheet.png" type="Texture" id=1]
 [ext_resource path="res://src/Tiles/Launcher.gd" type="Script" id=2]
+[ext_resource path="res://assets/sounds/launch.wav" type="AudioStream" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 7, 2 )
@@ -46,4 +47,8 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 shape = SubResource( 3 )
+
+[node name="Launch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -10.0
 [connection signal="body_entered" from="." to="." method="launch"]
