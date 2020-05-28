@@ -2,6 +2,7 @@ extends Node
 
 
 onready var CLONE = preload("res://src/Actor/Orb/Orb.tscn")
+onready var BATTERY_UI = $CanvasLayer2/BatteryUI
 onready var SWITCHLEVEL_TIMER = $SwitchLevel
 onready var TIMER = $Timer
 onready var TIMER_UI = $CanvasLayer/UI/Label
@@ -58,6 +59,7 @@ func go_to_next_level(first = false):
 		num_enemies = level
 		level_time += 2
 	add_child(_load_next_level())
+	BATTERY_UI.reset()
 	
 	TIMER.set_paused(false)
 	TIMER.stop()

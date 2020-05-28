@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Main/Game.gd" type="Script" id=1]
 [ext_resource path="res://src/Interface/UI.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/Interface/BatteryUI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 8, 112 )
@@ -42,5 +43,9 @@ one_shot = true
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="UI" parent="CanvasLayer" instance=ExtResource( 2 )]
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="BatteryUI" parent="CanvasLayer2" instance=ExtResource( 3 )]
 [connection signal="timeout" from="Timer" to="." method="no_more_time"]
 [connection signal="timeout" from="SwitchLevel" to="." method="go_to_next_level"]
