@@ -18,6 +18,9 @@ tile_data = PoolIntArray( 131072, 0, 65537, 131073, 0, 65537, 131074, 0, 65537, 
 [node name="Launcher" parent="." instance=ExtResource( 2 )]
 position = Vector2( 216, 200 )
 
+[node name="Player" parent="." instance=ExtResource( 4 )]
+position = Vector2( 168, 184 )
+
 [node name="Enemies" type="Node" parent="."]
 
 [node name="Armstrong" parent="Enemies" instance=ExtResource( 3 )]
@@ -37,6 +40,3 @@ DESIRED_STATE = 2
 [node name="Armstrong5" parent="Enemies" instance=ExtResource( 3 )]
 position = Vector2( 248, 24 )
 DESIRED_STATE = 2
-
-[node name="Player" parent="." instance=ExtResource( 4 )]
-position = Vector2( 168, 184 )
