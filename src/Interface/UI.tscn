@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Fonts/m3x6.tres" type="DynamicFont" id=1]
+[ext_resource path="res://src/Interface/UI.gd" type="Script" id=2]
+[ext_resource path="res://assets/font/m3x6.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 32
+use_mipmaps = true
+font_data = ExtResource( 3 )
 
 [node name="UI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -31,3 +39,13 @@ custom_fonts/font = ExtResource( 1 )
 text = "GAME OVER"
 align = 1
 valign = 1
+
+[node name="Button" type="Button" parent="."]
+visible = false
+margin_left = 152.0
+margin_top = 128.0
+margin_right = 232.0
+margin_bottom = 160.0
+custom_fonts/font = SubResource( 1 )
+text = "Restart?"
+[connection signal="pressed" from="Button" to="." method="restart"]

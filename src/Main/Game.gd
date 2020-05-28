@@ -7,6 +7,7 @@ onready var SWITCHLEVEL_TIMER = $SwitchLevel
 onready var TIMER = $Timer
 onready var TIMER_UI = $CanvasLayer/UI/Label
 onready var GAMEOVER_UI = $CanvasLayer/UI/Label2
+onready var RESTART_BUTTON = $CanvasLayer/UI/Button
 
 var previous_orders = []
 var left_over_time = 0
@@ -74,7 +75,12 @@ func end_game():
 	TIMER_UI.set_visible(false)
 	GAMEOVER_UI.text = "GAME OVER"
 	GAMEOVER_UI.set_visible(true)
+	RESTART_BUTTON.set_visible(true)
 
 
 func no_more_time():
 	end_game()
+
+
+func reset():
+	get_tree().reload_current_scene()

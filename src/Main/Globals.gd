@@ -3,4 +3,9 @@ extends Node
 
 var GAME
 var PLAYER
-var ARMSTRONG
+
+func reset():
+	GAME.reset()
+	GAME = null
+	PLAYER = null
+	

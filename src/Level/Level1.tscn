@@ -1,9 +1,15 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/Tiles/Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Tiles/Launcher.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Actor/Enemies/Armstrong/Armstrong.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/font/m3x6.ttf" type="DynamicFontData" id=5]
+
+[sub_resource type="DynamicFont" id=2]
+size = 32
+use_mipmaps = true
+font_data = ExtResource( 5 )
 
 [node name="Level1" type="Node2D"]
 
@@ -26,3 +32,73 @@ position = Vector2( 8, 120 )
 [node name="Armstrong" parent="Enemies" instance=ExtResource( 4 )]
 position = Vector2( 128, 184 )
 DESIRED_STATE = 2
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Tutorial" type="Control" parent="CanvasLayer"]
+margin_right = 384.0
+margin_bottom = 112.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="A" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 64.0
+margin_top = 16.0
+margin_right = 80.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 2 )
+text = "A"
+align = 1
+valign = 1
+
+[node name="D" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 80.0
+margin_top = 16.0
+margin_right = 96.0
+margin_bottom = 42.0
+custom_fonts/font = SubResource( 2 )
+text = "D"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftClick" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 256.0
+margin_right = 352.0
+margin_bottom = 26.0
+custom_fonts/font = SubResource( 2 )
+text = "LEFT CLICK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightClick" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 256.0
+margin_top = 24.0
+margin_right = 352.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 2 )
+text = "RIGHT CLICK"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightClick2" type="Label" parent="CanvasLayer/Tutorial"]
+margin_left = 168.0
+margin_top = 64.0
+margin_right = 216.0
+margin_bottom = 90.0
+custom_fonts/font = SubResource( 2 )
+text = "SPACE"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
