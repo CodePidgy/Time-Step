@@ -9,6 +9,7 @@ extents = Vector2( 8, 112 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+num_levels = 8
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 collision_layer = 8

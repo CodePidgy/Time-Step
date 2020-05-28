@@ -9,10 +9,12 @@ onready var TIMER_UI = $CanvasLayer/UI/Label
 onready var GAMEOVER_UI = $CanvasLayer/UI/Label2
 onready var RESTART_BUTTON = $CanvasLayer/UI/Button
 
+export var num_levels = 5
+export var level_time = 10
+
 var previous_orders = []
 var left_over_time = 0
 var level = 1
-var level_time = 10
 var num_enemies = 1
 var started = false
 
@@ -58,7 +60,11 @@ func go_to_next_level(first = false):
 		left_over_time = round(TIMER.get_time_left())
 		_spawn_clone()
 		remove_child(_load_current_level())
-		level += 1
+		if level + 1 <= num_levels:
+			level += 1
+		else:
+			end_game(true)
+		level_time += 1
 		num_enemies = level
 	add_child(_load_next_level())
 	BATTERY_UI.reset()
@@ -67,13 +73,16 @@ func go_to_next_level(first = false):
 	TIMER.stop()
 
 
-func end_game():
+func end_game(win = false):
 	for child in get_children():
 		if not child.name == "CanvasLayer":
 			remove_child(child)
 	
 	TIMER_UI.set_visible(false)
-	GAMEOVER_UI.text = "GAME OVER"
+	if not win:
+		GAMEOVER_UI.text = "GAME OVER"
+	elif win:
+		GAMEOVER_UI.text = "YOU WIN"
 	GAMEOVER_UI.set_visible(true)
 	RESTART_BUTTON.set_visible(true)
 

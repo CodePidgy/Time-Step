@@ -2,4 +2,4 @@ extends Control
 
 
 func restart():
-	Globals.reset()
+	Globals.GAME.reset()
