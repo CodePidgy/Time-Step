@@ -58,9 +58,6 @@ func change_charge():
 				# Set to 3/3
 				node.set_texture(battery_3_cell4)
 			break
-		# Is 3/3
-		elif node_texture == battery_3_cell4:
-			print(node.name + " is full")
 		# Move to next battery
 		current_battery += 1
 	
@@ -74,8 +71,5 @@ func change_charge():
 			# Set to 1/1
 			node.set_texture(battery_1_cell2)
 			break
-		# Is 1/1
-		elif node_texture == battery_1_cell2:
-			print(node.name + " is full")
 		# Move to next battery
 		current_battery += 1

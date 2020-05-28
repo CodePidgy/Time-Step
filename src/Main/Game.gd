@@ -9,6 +9,7 @@ onready var TIMER_UI = $CanvasLayer/UI/Label
 onready var GAMEOVER_UI = $CanvasLayer/UI/Label2
 
 var previous_orders = []
+var left_over_time = 0
 var level = 1
 var level_time = 10
 var num_enemies = 1
@@ -21,13 +22,13 @@ func _ready():
 
 
 func _physics_process(_delta):
-	TIMER_UI.text = str(round(TIMER.get_time_left())) if not TIMER.is_stopped() else str(level_time)
+	TIMER_UI.text = str(round(TIMER.get_time_left())) if not TIMER.is_stopped() else str(level_time + left_over_time)
 
 
 func _input(event):
 	if not started and event.is_action_pressed("jump"):
 		started = true
-		TIMER.start(level_time)
+		TIMER.start(level_time + left_over_time)
 		Globals.PLAYER.SM.state = Globals.PLAYER.SM.States.IDLE
 
 
@@ -53,11 +54,11 @@ func go_to_next_level(first = false):
 	started = false
 	if not first:
 		previous_orders.append(Globals.PLAYER.MT.new_order)
+		left_over_time = round(TIMER.get_time_left())
 		_spawn_clone()
 		remove_child(_load_current_level())
 		level += 1
 		num_enemies = level
-		level_time += 2
 	add_child(_load_next_level())
 	BATTERY_UI.reset()
 	

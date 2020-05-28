@@ -1,14 +1,17 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/Tiles/Tiles.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actor/Player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Tiles/Launcher.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/Actor/Enemies/Armstrong/Armstrong.tscn" type="PackedScene" id=4]
 
 [node name="Level3" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = ExtResource( 1 )
 cell_size = Vector2( 16, 16 )
+collision_layer = 16
+collision_mask = 0
 format = 1
 tile_data = PoolIntArray( 3, 0, 0, 4, 0, 1, 5, 0, 1, 6, 0, 1, 7, 0, 1, 8, 0, 1, 9, 0, 1, 10, 0, 1, 11, 0, 1, 12, 0, 1, 13, 0, 1, 14, 0, 1, 15, 0, 1, 16, 0, 1, 17, 0, 1, 18, 0, 1, 19, 0, 1, 20, 0, 1, 21, 0, 1, 22, 0, 1, 23, 0, 1, 65539, 0, 3, 131075, 0, 3, 131084, 0, 65536, 131085, 0, 65537, 131086, 0, 65537, 131087, 0, 65537, 131088, 0, 65537, 131089, 0, 65537, 131090, 0, 65537, 131091, 0, 65537, 131092, 0, 65537, 131093, 0, 65537, 131094, 0, 65537, 131095, 0, 65537, 196611, 0, 3, 262147, 0, 3, 327683, 0, 0, 327684, 0, 65537, 327685, 0, 65539, 327688, 0, 3, 393224, 0, 3, 458760, 0, 3, 458761, 0, 65537, 458762, 0, 65537, 458763, 0, 65537, 458764, 0, 65537, 458765, 0, 65537, 458766, 0, 65537, 458767, 0, 65537, 458768, 0, 65537, 458769, 0, 65537, 458770, 0, 65539, 458773, 0, 65536, 458774, 0, 65537, 458775, 0, 65537, 524295, 0, 65536, 524296, 0, 3, 589831, 0, 0, 589832, 0, 2, 655360, 0, 65537, 655361, 0, 65537, 655362, 0, 65537, 655363, 0, 65537, 655364, 0, 65537, 655365, 0, 65537, 655366, 0, 65537, 655367, 0, 1, 655368, 0, 2, 655369, 0, 65537, 655370, 0, 65537, 655371, 0, 65537, 655375, 0, 65536, 655376, 0, 65539, 720896, 0, 1, 720911, 0, 0, 720912, 0, 2, 720917, 0, 65536, 720918, 0, 65537, 720919, 0, 65537, 786432, 0, 1, 786447, 0, 0, 786448, 0, 2, 786453, 0, 0, 786454, 0, 1, 786455, 0, 1, 851968, 0, 1, 851969, 0, 65537, 851971, 0, 65537, 851972, 0, 65537, 851973, 0, 65537, 851974, 0, 65537, 851975, 0, 65537, 851976, 0, 65537, 851977, 0, 65537, 851978, 0, 65537, 851979, 0, 65537, 851980, 0, 65537, 851981, 0, 65537, 851982, 0, 65537, 851983, 0, 1, 851984, 0, 1, 851985, 0, 65537, 851986, 0, 65537, 851987, 0, 65537, 851988, 0, 65537, 851989, 0, 1, 851990, 0, 1, 851991, 0, 1 )
 
@@ -17,3 +20,16 @@ position = Vector2( 40, 216 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 376, 24 )
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Armstrong" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 80, 72 )
+
+[node name="Armstrong2" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 8, 152 )
+DESIRED_STATE = 2
+
+[node name="Armstrong3" parent="Enemies" instance=ExtResource( 4 )]
+position = Vector2( 360, 104 )
+DESIRED_STATE = 2

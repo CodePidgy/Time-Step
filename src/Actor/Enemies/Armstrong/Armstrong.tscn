@@ -144,7 +144,6 @@ hframes = 4
 shape = SubResource( 1 )
 
 [node name="DetectorLeft" type="RayCast2D" parent="."]
-visible = false
 position = Vector2( -7, 0 )
 enabled = true
 cast_to = Vector2( 0, 12 )
@@ -152,7 +151,6 @@ collision_mask = 48
 collide_with_areas = true
 
 [node name="DetectorRight" type="RayCast2D" parent="."]
-visible = false
 position = Vector2( 7, 0 )
 enabled = true
 cast_to = Vector2( 0, 12 )
