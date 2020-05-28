@@ -5,17 +5,18 @@
 [ext_resource path="res://src/Interface/BatteryUI.tscn" type="PackedScene" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 8, 112 )
+extents = Vector2( 8, 208 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+num_levels = 8
 
 [node name="LeftWall" type="StaticBody2D" parent="."]
 collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall"]
-position = Vector2( -8, 104 )
+position = Vector2( -8, 48 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
@@ -26,7 +27,7 @@ collision_layer = 8
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall"]
-position = Vector2( 392, 104 )
+position = Vector2( 392, 48 )
 shape = SubResource( 1 )
 __meta__ = {
 "_edit_group_": true
